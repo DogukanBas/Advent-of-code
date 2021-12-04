@@ -1,23 +1,22 @@
 #part one
-
-
 f=open("input.txt","r")
 cnt=0
 
 input_list=  list(map(lambda line:int(line.strip("\n")),f.readlines()))
 
 for i in range(1,len(input_list)):
-    if int(input_list[i])>int(input_list[i-1]):
+    if input_list[i]>input_list[i-1]:
         cnt+=1
 
 print(cnt)
 
 #part two
+
 cnt1=0
-triple_list = list()
-for i in range(0,len(input_list)-2):
-    triple_list.append(input_list[i]+input_list[i+1]+input_list[i+2])
-for i in range(1,len(triple_list)):
-    if triple_list[i]>triple_list[i-1]:
+prev=sum(input_list[0:3])
+for i in range(0,len(input_list)-3):
+    next=sum(input_list[i+1:i+4])
+    if next>prev:
         cnt1+=1
+    prev=next
 print(cnt1)
